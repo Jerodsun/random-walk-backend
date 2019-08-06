@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from .models import SampleData, BlackScholes
 from .serializers import SampleInputSerializer, BlackScholesSerializer
 
+from .functions.princeton_black_scholes import callPrice
+
 # Create your views here.
 
 class SampleDataView(viewsets.ModelViewSet):
@@ -33,3 +35,14 @@ class BlackScholesView(viewsets.ModelViewSet):
     serializer_class = BlackScholesSerializer
     queryset = BlackScholes.objects.all()
     http_method_names = ['get', 'post']
+
+    def create(self, request):
+        serializer = BlackScholesSerializer(data=request.data)
+        if serializer.is_valid():
+            d = serializer.validated_data
+            # print(d)
+            c = callPrice(s=d['price'], x=d['strike'], r=d['interest_rate'], sigma=d['volatility'], t=d['time_to_exp'])
+            serializer.save()
+            return Response({'message':'success', 'call price': c})
+        return Response({'message':'error'})
+        
