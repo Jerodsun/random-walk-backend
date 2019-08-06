@@ -24,3 +24,14 @@ class SampleData(models.Model):
 
 # sample POST
 # curl -d '{"direction":"-1"}'  -X POST 127.0.0.1:8000/api/randomwalk/
+
+class BlackScholes(models.Model):
+    """This is a sample model to store the POST request for a Black Scholes Merton
+    calculation. """
+    # Use FE for validation.
+    created = models.DateTimeField(auto_now_add=True)
+    price = models.FloatField()
+    strike = models.DecimalField(max_digits=6, decimal_places=1)
+    interest_rate = models.FloatField() # This needs to be divided by 100 from FE
+    volatility = models.FloatField()
+    time_to_exp = models.IntegerField()
