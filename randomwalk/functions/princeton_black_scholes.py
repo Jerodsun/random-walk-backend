@@ -9,8 +9,6 @@ https://introcs.cs.princeton.edu/python/21function/blackscholes.py
 # blackscholes.py
 #-----------------------------------------------------------------------
 
-import stdio
-import sys
 import math
 
 #-----------------------------------------------------------------------
@@ -69,13 +67,13 @@ def callPrice(s, x, r, sigma, t):
 # Accept s, x, r, sigma, and t from the command line and write
 # the Black-Scholes value.
 
-s     = float(sys.argv[1])
-x     = float(sys.argv[2])
-r     = float(sys.argv[3])
-sigma = float(sys.argv[4])
-t     = float(sys.argv[5])
+# s     = float(sys.argv[1])
+# x     = float(sys.argv[2])
+# r     = float(sys.argv[3])
+# sigma = float(sys.argv[4])
+# t     = float(sys.argv[5])
 
-stdio.writeln(callPrice(s, x, r, sigma, t))
+# stdio.writeln(callPrice(s, x, r, sigma, t))
 
 #-----------------------------------------------------------------------
 
