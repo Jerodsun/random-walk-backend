@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.response import Response
 
 from .models import SampleData, BlackScholes
@@ -20,7 +20,7 @@ class SampleDataView(viewsets.ModelViewSet):
             serializer.save(ip_address=self.get_client_ip(request))
             return Response({'message':'success', 'params':serializer.validated_data})
         # catch errors
-        return Response({'message':'error'})
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def get_client_ip(self, request):
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
