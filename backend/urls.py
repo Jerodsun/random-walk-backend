@@ -22,6 +22,7 @@ from randomwalk import views
 
 router = routers.DefaultRouter()
 router.register(r'randomwalk', views.SampleDataView, 'randomwalk')
+router.register(r'blackscholes', views.BlackScholesView, 'blackscholes')
 
 # I believe we can register multiple routers
 
