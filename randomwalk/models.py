@@ -31,7 +31,7 @@ class BlackScholes(models.Model):
     # Use FE for validation.
     created = models.DateTimeField(auto_now_add=True)
     price = models.FloatField()
-    strike = models.DecimalField(max_digits=6, decimal_places=1)
+    strike = models.FloatField() # DecimalField returns string repr for serializer
     interest_rate = models.FloatField() # This needs to be divided by 100 from FE
     volatility = models.FloatField()
     time_to_exp = models.IntegerField()

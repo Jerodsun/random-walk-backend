@@ -13,7 +13,7 @@ class BlackScholesSerializer(serializers.ModelSerializer):
     # https://www.django-rest-framework.org/tutorial/1-serialization/
     id = serializers.IntegerField(read_only=True)
     price = serializers.FloatField()
-    strike = serializers.DecimalField(max_digits=6, decimal_places=1)
+    strike = serializers.FloatField()
     interest_rate = serializers.FloatField()
     volatility = serializers.FloatField()
     time_to_exp = serializers.IntegerField()
