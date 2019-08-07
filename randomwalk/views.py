@@ -43,6 +43,5 @@ class BlackScholesView(viewsets.ModelViewSet):
             # print(d)
             c = callPrice(s=d['price'], x=d['strike'], r=d['interest_rate'], sigma=d['volatility'], t=d['time_to_exp'])
             serializer.save()
-            return Response({'message':'success', 'call price': c})
+            return Response({'message':'success', 'call price': c, 'params': d})
         return Response({'message':'error'})
-        
