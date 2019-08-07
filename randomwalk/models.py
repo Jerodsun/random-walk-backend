@@ -20,6 +20,7 @@ class SampleData(models.Model):
         indexes = [
             models.Index(fields=['created'], name='created_idx')
         ]
+        verbose_name_plural = "Sample Data Model" # This shows up in django admin
 
 
 # sample POST
@@ -35,3 +36,6 @@ class BlackScholes(models.Model):
     interest_rate = models.FloatField() # This needs to be divided by 100 from FE
     volatility = models.FloatField()
     time_to_exp = models.IntegerField()
+
+    class Meta:
+        verbose_name_plural = "Black Scholes Model"
