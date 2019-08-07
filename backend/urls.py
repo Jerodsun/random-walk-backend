@@ -18,15 +18,23 @@ from django.urls import path, include
 
 from rest_framework import routers
 
+from rest_framework_swagger.views import get_swagger_view
+
 from randomwalk import views
+
+# Routers
+# Can register multiple routers
 
 router = routers.DefaultRouter()
 router.register(r'randomwalk', views.SampleDataView, 'randomwalk')
 router.register(r'blackscholes', views.BlackScholesView, 'blackscholes')
 
-# I believe we can register multiple routers
+# Swagger Docs
+
+schema_view = get_swagger_view(title='Random Walk API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('swagger/', schema_view)
 ]
