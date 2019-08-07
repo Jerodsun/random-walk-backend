@@ -26,3 +26,7 @@ np.random.seed(int(str(hash(now))[-8:])) # last 8 integers
 Update 8/6/2019:
 
 The original plan was to have a random walk and brownian motion implementation stored in one table, one model. But it appears that cross validation is unnecessarily complicated and, after all, that's what multiple tables are for. Therefore, they will be separated into two different models for each type of View.
+
+Next step is to add FE/BE validations, so there's no ZeroDivisionError for example.
+
+Seems to be some weird thing with not allowing .1 for volatility?
