@@ -28,7 +28,7 @@ from randomwalk import views
 router = routers.DefaultRouter()
 router.register(r'randomwalk', views.SampleDataView, 'randomwalk')
 router.register(r'blackscholes', views.BlackScholesView, 'blackscholes')
-
+router.register(r'brownianmotion', views.BrownianMotionView, 'brownianmotion')
 # Swagger Docs
 
 schema_view = get_swagger_view(title='Random Walk API')

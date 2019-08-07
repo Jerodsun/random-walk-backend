@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import SampleData, BlackScholes
+from .models import SampleData, BlackScholes, BrownianMotion
 
 class SampleInputSerializer(serializers.ModelSerializer):
     """ The InputSerializer exposes which fields are required to be POSTed """
@@ -24,3 +24,18 @@ class BlackScholesSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return BlackScholes.objects.create(**validated_data)
+
+class BrownianMotionSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+    volatility = serializers.FloatField()
+    variance = serializers.FloatField()
+    start = serializers.FloatField()
+    count = serializers.IntegerField()
+    class Meta:
+        model = BrownianMotion
+        fields = ['id', 'volatility', 'variance', 'start', 'count']
+
+    def create(self, validated_data):
+        return BrownianMotion.objects.create(**validated_data)
+
+    # find out why exactly this is needed

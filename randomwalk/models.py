@@ -1,4 +1,5 @@
 from django.db import models
+# from django.db.models import Q
 
 # Create your models here.
 
@@ -39,3 +40,41 @@ class BlackScholes(models.Model):
 
     class Meta:
         verbose_name_plural = "Black Scholes Model"
+
+
+class BrownianMotion(models.Model):
+    """ This is a model to warehouse when a random implementation is requested to be generated.
+    Demonstrated with Brownian Motion and Random Walk. """
+
+    GENERATOR_CHOICES = (
+        ('BM', 'Brownian Motion'),
+        ('RW', 'Random Walk'),
+    )
+    created = models.FloatField() # Datetime should come from inside Python function
+    # type = models.CharField(max_length=1, choices=GENERATOR_CHOICES)
+    # volatility = sigma, variance = mu, start = x0
+    volatility = models.FloatField()
+    variance = models.FloatField()
+    start = models.FloatField()
+    count = models.IntegerField()
+    
+
+    # As Brownian Motion is going into one class, there is no need for constraints
+    # class Meta:
+    #     # enforce model constraints
+    #     constraints = [
+    #         models.CheckConstraint(
+    #             check=(
+    #                 Q(volatility__isnull=False) &
+    #                 Q(variance__isnull=False) &
+    #                 Q(start__isnull=False) &
+    #                 Q(count__isnull=False)                
+    #             ) | (
+    #                 Q(volatility__isnull=True) &
+    #                 Q(variance__isnull=True) &
+    #                 Q(start__isnull=True) &
+    #                 Q(count__isnull=True) 
+    #             ),
+    #             name="all_or_none_parameters"
+    #         )
+    #     ]
