@@ -1,0 +1,13 @@
+django
+
+gunicorn
+django-heroku
+
+djangorestframework
+django-rest-swagger
+django-rest-auth
+
+django-celery-beat
+django-celery-results
+
+django-cors-headers
