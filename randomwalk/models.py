@@ -57,6 +57,7 @@ class BrownianMotion(models.Model):
     variance = models.FloatField()
     start = models.FloatField()
     count = models.IntegerField()
+    repeat = models.IntegerField()
     
 
     # As Brownian Motion is going into one class, there is no need for constraints

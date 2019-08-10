@@ -58,7 +58,7 @@ class BrownianMotionView(viewsets.ModelViewSet):
         serializer = BrownianMotionSerializer(data=request.data)
         if serializer.is_valid():
             d = serializer.validated_data
-            result, time = brownianMotion(sigma = d['volatility'], mu=d['variance'], x0=d['start'], n=d['count'])
+            result, time = brownianMotion(sigma = d['volatility'], mu=d['variance'], x0=d['start'], n=d['count'], repeat=d['repeat'])
             serializer.save(created=time)
             return Response({'message':'success', 'result': result, 'params': d})
         return Response({'message':'error'})
