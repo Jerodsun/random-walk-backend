@@ -31,9 +31,10 @@ class BrownianMotionSerializer(serializers.ModelSerializer):
     variance = serializers.FloatField()
     start = serializers.FloatField()
     count = serializers.IntegerField()
+    repeat = serializers.IntegerField()
     class Meta:
         model = BrownianMotion
-        fields = ['id', 'volatility', 'variance', 'start', 'count']
+        fields = ['id', 'volatility', 'variance', 'start', 'count', 'repeat']
 
     def create(self, validated_data):
         return BrownianMotion.objects.create(**validated_data)

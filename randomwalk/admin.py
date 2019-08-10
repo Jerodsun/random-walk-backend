@@ -10,7 +10,7 @@ class BlackScholesAdmin(admin.ModelAdmin):
     list_display = ('created', 'price', 'strike', 'interest_rate', 'volatility', 'time_to_exp')
 
 class BrownianMotionAdmin(admin.ModelAdmin):
-    list_display = ('created', 'volatility', 'variance', 'start', 'count')
+    list_display = ('created', 'volatility', 'variance', 'start', 'count', 'repeat')
 
 admin.site.register(SampleData, SampleDataAdmin)
 admin.site.register(BlackScholes, BlackScholesAdmin)
