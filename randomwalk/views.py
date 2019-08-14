@@ -7,6 +7,7 @@ from .serializers import SampleInputSerializer, BlackScholesSerializer, Brownian
 from .functions.princeton_black_scholes import callPrice
 from .functions.brownian_motion import brownianMotion
 
+import json
 # Create your views here.
 
 class SampleDataView(viewsets.ModelViewSet):
@@ -62,3 +63,15 @@ class BrownianMotionView(viewsets.ModelViewSet):
             serializer.save(created=time)
             return Response({'message':'success', 'result': result, 'params': d})
         return Response({'message':'error'})
+
+class StaticView(views.APIView):
+    def get(self, request):
+        return Response([65, 59, 90, 81, 56, 55, 40])
+
+
+class AxiosView(views.APIView):
+    """ Temporary placeholder to test FE/BE integration locally"""
+    def get(self, request):
+        with open('./randomwalk/static/usd_vs_aud.json') as file: # apparently it's called from the top level... change to os import later
+            data = json.load(file) 
+        return Response(data)
