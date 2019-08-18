@@ -132,4 +132,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = [] # Allow all for now
 
+# Swagger deprecation of CoreAPI
+
+REST_FRAMEWORK = { 
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' 
+    }
+
 django_heroku.settings(locals())
