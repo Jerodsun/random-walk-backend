@@ -11,3 +11,5 @@ django-celery-beat
 django-celery-results
 
 django-cors-headers
+
+numpy
