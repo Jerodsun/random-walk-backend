@@ -36,5 +36,7 @@ schema_view = get_swagger_view(title='Random Walk API')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api2/', views.StaticView.as_view()),
+    path('axios_test/', views.AxiosView.as_view()),
     path('swagger/', schema_view)
 ]
