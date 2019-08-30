@@ -16,7 +16,7 @@ class BlackScholesSerializer(serializers.ModelSerializer):
     strike = serializers.FloatField()
     interest_rate = serializers.FloatField()
     volatility = serializers.FloatField()
-    time_to_exp = serializers.IntegerField()
+    time_to_exp = serializers.FloatField()
 
     class Meta:
         model = BlackScholes

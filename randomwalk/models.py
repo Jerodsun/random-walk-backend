@@ -36,7 +36,7 @@ class BlackScholes(models.Model):
     strike = models.FloatField() # DecimalField returns string repr for serializer
     interest_rate = models.FloatField() # This needs to be divided by 100 from FE
     volatility = models.FloatField()
-    time_to_exp = models.IntegerField()
+    time_to_exp = models.FloatField()
 
     class Meta:
         verbose_name_plural = "Black Scholes Model"
