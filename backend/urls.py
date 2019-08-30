@@ -14,8 +14,29 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from rest_framework import routers
+
+from rest_framework_swagger.views import get_swagger_view
+
+from randomwalk import views
+
+# Routers
+# Can register multiple routers
+
+router = routers.DefaultRouter()
+router.register(r'randomwalk', views.SampleDataView, 'randomwalk')
+router.register(r'blackscholes', views.BlackScholesView, 'blackscholes')
+router.register(r'brownianmotion', views.BrownianMotionView, 'brownianmotion')
+# Swagger Docs
+
+schema_view = get_swagger_view(title='Random Walk API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('api2/', views.StaticView.as_view()),
+    path('axios_test/', views.AxiosView.as_view()),
+    path('swagger/', schema_view)
 ]
