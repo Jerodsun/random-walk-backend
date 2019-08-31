@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = [] # Allow all for now
+# CORS_ORIGIN_WHITELIST = [] # Allow all for now
 
 # Swagger deprecation of CoreAPI
 
