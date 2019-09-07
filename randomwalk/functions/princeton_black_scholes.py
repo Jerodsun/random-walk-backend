@@ -62,6 +62,19 @@ def callPrice(s, x, r, sigma, t):
     b = a - sigma * math.sqrt(t)
     return s * cdf(a) - x * math.exp(-r * t) * cdf(b)
 
+def putPrice(s, x, r, sigma, t):
+    a = (math.log(s/x) + (r + sigma * sigma/2.0) * t) / \
+        (sigma * math.sqrt(t))
+    b = a - sigma * math.sqrt(t)
+    return x * math.exp(-r * t) * cdf(-b) - s * cdf(-a)
+
+# argparse test
+
+if __name__ == '__main__':
+    from numpy import allclose
+    assert allclose(callPrice(23.75, 32.50, 0.01, 0.35, 0.5), 0.3472009973152752)
+    assert allclose(putPrice(23.75, 32.50, 0.01, 0.35, 0.5), 8.935106571077451)
+
 #-----------------------------------------------------------------------
 
 # Accept s, x, r, sigma, and t from the command line and write
